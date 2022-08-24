@@ -22,7 +22,9 @@ def start(update: Update, context: CallbackContext):
         chat_id=chat_id, text="Hello! I am the seat allotment bot. I will help you to get your seat allotment.")
     bot.send_message(
         chat_id=chat_id, text="Please type /seat to get your seat allotment.")
-
+def author(update: Update, context: CallbackContext):
+    chat_id = update.message.chat_id
+    bot.send_message(chat_id=chat_id, text="This bot is developed by Krishnadev P Melevila, CSEA 2021-2025 VJCET\nInsta:https://instagram.com/krishnadev_p_melevila\nWebsite:https://krishnadevpmelevila.com\nIf there any bug in this bot please report to +918089188971 on Whatsapp! Thnx in advance:)")
 
 def seat(update: Update, context: CallbackContext):
     chat_id = update.message.chat_id
@@ -43,6 +45,7 @@ def seat(update: Update, context: CallbackContext):
 updater = Updater(token, use_context=True)
 dp = updater.dispatcher
 dp.add_handler(CommandHandler('seat', seat))
+dp.add_handler(CommandHandler('author', author))
 dp.add_handler(CommandHandler('start', start))
 updater.start_polling()
 
