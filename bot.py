@@ -28,7 +28,10 @@ def seat(update: Update, context: CallbackContext):
     chat_id = update.message.chat_id
     bot.send_message(
         chat_id=chat_id, text="Thankyou! Please wait for 6 seconds... I am getting it from the VJCET website....")
+    os.remove("seat.pdf")
     link = scrap()
+   
+
     bot.send_message(chat_id=chat_id, text="Almost here...")
     r = requests.get(link, allow_redirects=True)
     open('seat.pdf', 'wb').write(r.content)
